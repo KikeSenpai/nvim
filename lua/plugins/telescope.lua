@@ -4,7 +4,6 @@ vim.pack.add({
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/nvim-telescope/telescope.nvim',
   'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
-  'https://github.com/nvim-telescope/telescope-ui-select.nvim',
   'https://github.com/nvim-tree/nvim-web-devicons',
 }, { load = true })
 
@@ -13,15 +12,9 @@ require('telescope').setup {
     find_files = { hidden = true },
     live_grep = { additional_args = { '--hidden' } },
   },
-  extensions = {
-    ['ui-select'] = {
-      require('telescope.themes').get_dropdown(),
-    },
-  },
 }
 
 pcall(require('telescope').load_extension, 'fzf')
-pcall(require('telescope').load_extension, 'ui-select')
 
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search [H]elp' })

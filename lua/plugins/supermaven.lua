@@ -14,9 +14,6 @@ require('supermaven-nvim').setup {
   log_level = 'off',
   disable_inline_completion = false,
   disable_keymaps = false,
-  condition = function()
-    return false
-  end,
 }
 
 -- vim: ts=2 sts=2 sw=2 et

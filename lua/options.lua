@@ -39,7 +39,7 @@ vim.o.timeoutlen = 500
 vim.o.splitright = true
 vim.o.splitbelow = true
 
--- Whitespace display
+-- Whitespace display (vim.opt needed here for table-valued options; vim.o used everywhere else)
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', lead = '·' }
 

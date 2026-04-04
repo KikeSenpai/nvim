@@ -62,8 +62,11 @@ function M.render()
     if (d.changed or 0) > 0 then b_parts[#b_parts + 1] = '~' .. d.changed end
     if (d.removed or 0) > 0 then b_parts[#b_parts + 1] = '-' .. d.removed end
   end
-  local diag = vim.diagnostic.status and vim.diagnostic.status(0) or ''
-  if diag ~= '' then b_parts[#b_parts + 1] = diag end
+  local counts = vim.diagnostic.count(0)
+  local e = counts[vim.diagnostic.severity.ERROR] or 0
+  local w = counts[vim.diagnostic.severity.WARN] or 0
+  if e > 0 then b_parts[#b_parts + 1] = '󰅚 ' .. e end
+  if w > 0 then b_parts[#b_parts + 1] = '󰀪 ' .. w end
   local section_b = #b_parts > 0 and hl('SLSectionB', ' ' .. table.concat(b_parts, ' ') .. ' ') or ''
 
   -- Section C: filename (left side)

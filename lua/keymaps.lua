@@ -32,6 +32,9 @@ vim.keymap.set('n', 'J', ':m .+1<CR>==', { desc = 'Move line down in normal mode
 vim.keymap.set('x', 'K', ":move '<-2<CR>gv=gv", { desc = 'Move line up in visual mode' })
 vim.keymap.set('x', 'J', ":move '>+1<CR>gv=gv", { desc = 'Move line down in visual mode' })
 
+-- Join lines (since J is remapped to move lines)
+vim.keymap.set('n', '<leader>J', 'J', { desc = '[J]oin Lines' })
+
 -- Buffer management
 vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = '[D]elete current [B]uffer' })
 vim.keymap.set('n', '<leader>ba', ':%bd|edit#|bd#<CR>', { desc = 'Delete [A]ll [B]uffers' })

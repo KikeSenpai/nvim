@@ -97,6 +97,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Highlight references under cursor
     local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+    -- Toggle inlay hints
+    if client and client.server_capabilities.inlayHintProvider then
+      map('<leader>li', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }, { bufnr = event.buf })
+      end, 'Toggle [I]nlay Hints')
+    end
     if client and client.server_capabilities.documentHighlightProvider then
       local hl_group = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
