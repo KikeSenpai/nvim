@@ -4,7 +4,7 @@ vim.pack.add({
   'https://github.com/Bekaboo/dropbar.nvim',
 }, { load = true })
 
--- Defer setup to avoid conflict with vim.pack redraw during startup
+-- NOTE: Defer setup to avoid conflict with vim.pack redraw during startup
 vim.api.nvim_create_autocmd('UIEnter', {
   once = true,
   callback = function()

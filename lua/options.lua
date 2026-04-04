@@ -35,7 +35,7 @@ vim.o.signcolumn = 'yes'
 vim.o.updatetime = 250
 vim.o.timeoutlen = 500
 
--- Configure how new splits should be opened
+-- NOTE: Configure how new splits should be opened
 vim.o.splitright = true
 vim.o.splitbelow = true
 

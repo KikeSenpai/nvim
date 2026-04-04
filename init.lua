@@ -1,5 +1,5 @@
 -- Set <space> as the leader key
--- Must happen before plugins are loaded
+-- NOTE: Must happen before plugins are loaded
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -24,7 +24,7 @@ end
 -- Statusline (after plugins so colorscheme is loaded)
 require("statusline").setup()
 
--- Enable experimental ui2 (removes "Press ENTER" prompts)
+-- NOTE: Enable experimental ui2 (removes "Press ENTER" prompts)
 pcall(function()
 	require("vim._core.ui2").enable()
 end)

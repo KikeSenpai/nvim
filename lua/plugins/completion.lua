@@ -5,7 +5,7 @@ vim.pack.add({
   'https://github.com/saghen/blink.cmp',
 }, { load = true })
 
--- Build LuaSnip jsregexp support (run manually after install: cd <plugin> && make install_jsregexp)
+-- NOTE: jsregexp not built — LuaSnip falls back to Lua patterns for snippet transforms
 require('luasnip').setup {}
 
 require('blink.cmp').setup {
