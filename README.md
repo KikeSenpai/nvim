@@ -70,10 +70,3 @@ Install via your package manager (e.g. `brew`, `apt`):
 | [mini.nvim](https://github.com/echasnovski/mini.nvim) | Collection of small utilities |
 | [which-key.nvim](https://github.com/folke/which-key.nvim) | Keybinding hints |
 
-## LSP Servers
-
-Managed by Mason and auto-installed on first launch:
-
-`cssls`, `dockerls`, `jsonls`, `marksman`, `pyright`, `tflint`, `terraformls`, `ts_ls`, `yamlls`, `sqls`, `html`, `kcl`, `lua_ls`, `helm_ls`
-
-Also installs: `stylua`, `markdownlint`, `luacheck`, `jq`
