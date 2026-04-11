@@ -1,34 +1,35 @@
 -- [[ Code formatting ]]
 
 vim.pack.add({
-  'https://github.com/stevearc/conform.nvim',
+  "https://github.com/stevearc/conform.nvim",
 }, { load = true })
 
-require('conform').setup {
+require("conform").setup({
   notify_on_error = false,
   formatters_by_ft = {
-    lua = { 'stylua' },
-    terraform = { 'terraform_fmt' },
-    markdown = { 'markdownlint' },
-    json = { 'jq' },
+    lua = { "stylua" },
+    terraform = { "terraform_fmt" },
+    markdown = { "markdownlint" },
+    json = { "jq" },
   },
   default_format_opts = {
-    lsp_format = 'never',
+    lsp_format = "never",
   },
   format_on_save = function(bufnr)
-    local disable_filetypes = { proto = true }
+    local disable_filetypes = {
+      proto = true,
+      sql = true,
+    }
     if disable_filetypes[vim.bo[bufnr].filetype] then
       return nil
     end
     return {
       timeout_ms = 500,
-      lsp_format = 'fallback',
+      lsp_format = "fallback",
     }
   end,
-}
+})
 
-vim.keymap.set('', '<leader>f', function()
-  require('conform').format { async = true }
-end, { desc = '[F]ormat the current buffer' })
-
--- vim: ts=2 sts=2 sw=2 et
+vim.keymap.set("", "<leader>f", function()
+  require("conform").format({ async = true })
+end, { desc = "[F]ormat the current buffer" })

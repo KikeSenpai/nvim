@@ -11,6 +11,7 @@ Personal Neovim 0.12 configuration using the native plugin manager (`vim.pack`).
 - [Git](https://git-scm.com/)
 - A C compiler (`gcc` or `clang`) for Treesitter parser and telescope-fzf-native compilation
 - Python 3.12 via [pyenv](https://github.com/pyenv/pyenv) with `pynvim` installed
+- [StyLua](https://github.com/JohnnyMorganz/StyLua) for Lua formatting checks outside Neovim
 
 ### System packages
 
@@ -49,7 +50,18 @@ Install via your package manager (e.g. `brew`, `apt`):
    nvim
    ```
 
-   On first launch, plugins are pulled automatically via `vim.pack` and Mason installs all configured LSP servers, formatters, and linters.
+On first launch, plugins are pulled automatically via `vim.pack` and Mason installs all configured LSP servers, formatters, and linters.
+
+## Formatting
+
+Lua formatting is standardized with StyLua. In Neovim, `conform.nvim` uses StyLua for Lua buffers on save and through `<leader>f`.
+
+To format or verify from the command line:
+
+```sh
+stylua .
+stylua --check .
+```
 
 ## Plugins
 
@@ -69,4 +81,3 @@ Install via your package manager (e.g. `brew`, `apt`):
 | [obsidian.nvim](https://github.com/epwalsh/obsidian.nvim) | Obsidian vault integration |
 | [mini.nvim](https://github.com/echasnovski/mini.nvim) | Collection of small utilities |
 | [which-key.nvim](https://github.com/folke/which-key.nvim) | Keybinding hints |
-

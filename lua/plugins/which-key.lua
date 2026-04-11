@@ -1,10 +1,10 @@
 -- [[ Keymap hints popup ]]
 
 vim.pack.add({
-  'https://github.com/folke/which-key.nvim',
+  "https://github.com/folke/which-key.nvim",
 }, { load = true })
 
-require('which-key').setup {
+require("which-key").setup({
   delay = 0,
   preset = false,
   icons = {
@@ -12,7 +12,7 @@ require('which-key').setup {
   },
   win = {
     no_overlap = true,
-    border = 'rounded',
+    border = "rounded",
     padding = { 1, 2 },
     row = math.huge,
     col = math.huge,
@@ -20,19 +20,17 @@ require('which-key').setup {
     height = { min = 4, max = 25 },
   },
   spec = {
-    { '<leader>b', group = '[B]uffer' },
-    { '<leader>d', group = '[D]iagnostic' },
-    { '<leader>e', group = 'File [E]xplorer' },
-    { '<leader>g', group = '[G]oto' },
-    { '<leader>h', group = 'Git [H]unks', mode = { 'n', 'v' } },
-    { '<leader>j', group = '[J]ump anywhere' },
-    { '<leader>l', group = '[L]SP' },
-    { '<leader>m', group = '[M]arkdown' },
-    { '<leader>o', group = '[O]bsidian' },
-    { '<leader>p', group = 'S[p]ell Checking' },
-    { '<leader>s', group = '[S]earch' },
-    { '<leader>w', group = '[W]indow' },
+    { "<leader>b", group = "[B]uffer" },
+    { "<leader>d", group = "[D]iagnostic" },
+    { "<leader>e", group = "File [E]xplorer" },
+    { "<leader>g", group = "[G]oto" },
+    { "<leader>h", group = "Git [H]unks", mode = { "n", "v" } },
+    { "<leader>j", group = "[J]ump anywhere" },
+    { "<leader>l", group = "[L]SP" },
+    { "<leader>m", group = "[M]arkdown" },
+    { "<leader>o", group = "[O]bsidian" },
+    { "<leader>p", group = "S[p]ell Checking" },
+    { "<leader>s", group = "[S]earch" },
+    { "<leader>w", group = "[W]indow" },
   },
-}
-
--- vim: ts=2 sts=2 sw=2 et
+})

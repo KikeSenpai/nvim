@@ -5,14 +5,14 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 -- Don't show the mode, since it's already in status line
 vim.o.showmode = false
 
 -- Sync clipboard between OS and Neovim
 vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
+  vim.o.clipboard = "unnamedplus"
 end)
 
 -- Keeps indentation when wrapping lines
@@ -29,7 +29,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.o.signcolumn = 'yes'
+vim.o.signcolumn = "yes"
 
 -- Decrease update time
 vim.o.updatetime = 250
@@ -41,10 +41,10 @@ vim.o.splitbelow = true
 
 -- Whitespace display (vim.opt needed here for table-valued options; vim.o used everywhere else)
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', lead = '·' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", lead = "·" }
 
 -- Preview substitutions live
-vim.o.inccommand = 'split'
+vim.o.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.o.cursorline = true
@@ -59,28 +59,26 @@ vim.o.softtabstop = 4
 vim.o.expandtab = false
 
 -- Vertical line for code line limit
-vim.o.colorcolumn = '120'
+vim.o.colorcolumn = "120"
 
 -- Highlight on search
 vim.o.hlsearch = true
 
 -- Completion options (updated for 0.12 native completion)
-vim.o.completeopt = 'menuone,noselect,fuzzy'
+vim.o.completeopt = "menuone,noselect,fuzzy"
 
 -- Built-in optional packages (0.12)
-vim.cmd.packadd 'nvim.undotree'
-vim.cmd.packadd 'nvim.difftool'
+vim.cmd.packadd("nvim.undotree")
+vim.cmd.packadd("nvim.difftool")
 
 -- Custom filetypes
-vim.filetype.add {
+vim.filetype.add({
   extension = {
-    lock = 'toml',
+    lock = "toml",
   },
   pattern = {
-    ['.*/templates/.*%.yaml'] = 'helm',
-    ['.*/templates/.*%.tpl'] = 'helm',
-    ['helmfile.*%.yaml'] = 'helm',
+    [".*/templates/.*%.yaml"] = "helm",
+    [".*/templates/.*%.tpl"] = "helm",
+    ["helmfile.*%.yaml"] = "helm",
   },
-}
-
--- vim: ts=2 sts=2 sw=2 et
+})

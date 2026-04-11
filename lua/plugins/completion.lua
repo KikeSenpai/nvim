@@ -1,25 +1,25 @@
 -- [[ Autocompletion — blink.cmp + LuaSnip ]]
 
 vim.pack.add({
-  'https://github.com/L3MON4D3/LuaSnip',
-  'https://github.com/saghen/blink.cmp',
+  "https://github.com/L3MON4D3/LuaSnip",
+  "https://github.com/saghen/blink.cmp",
 }, { load = true })
 
 -- NOTE: jsregexp not built — LuaSnip falls back to Lua patterns for snippet transforms
-require('luasnip').setup {}
+require("luasnip").setup({})
 
-require('blink.cmp').setup {
+require("blink.cmp").setup({
   keymap = {
-    preset = 'default',
+    preset = "default",
 
-    ['<C-e>'] = false,
-    ['<C-j>'] = { 'select_next', 'fallback' },
-    ['<C-k>'] = { 'select_prev', 'fallback' },
-    ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
-    ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
-    ['<C-l>'] = { 'show', 'show_documentation', 'hide_documentation' },
-    ['<C-h>'] = { 'show_signature', 'hide_signature', 'fallback' },
-    ['<CR>'] = {
+    ["<C-e>"] = false,
+    ["<C-j>"] = { "select_next", "fallback" },
+    ["<C-k>"] = { "select_prev", "fallback" },
+    ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+    ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+    ["<C-l>"] = { "show", "show_documentation", "hide_documentation" },
+    ["<C-h>"] = { "show_signature", "hide_signature", "fallback" },
+    ["<CR>"] = {
       function(cmp)
         if cmp.snippet_active() then
           return cmp.accept()
@@ -27,13 +27,13 @@ require('blink.cmp').setup {
           return cmp.select_and_accept()
         end
       end,
-      'snippet_forward',
-      'fallback',
+      "snippet_forward",
+      "fallback",
     },
   },
 
   appearance = {
-    nerd_font_variant = 'mono',
+    nerd_font_variant = "mono",
   },
 
   completion = {
@@ -41,14 +41,12 @@ require('blink.cmp').setup {
   },
 
   sources = {
-    default = { 'lsp', 'path', 'snippets' },
+    default = { "lsp", "path", "snippets" },
   },
 
-  snippets = { preset = 'luasnip' },
+  snippets = { preset = "luasnip" },
 
-  fuzzy = { implementation = 'lua' },
+  fuzzy = { implementation = "lua" },
 
   signature = { enabled = true },
-}
-
--- vim: ts=2 sts=2 sw=2 et
+})

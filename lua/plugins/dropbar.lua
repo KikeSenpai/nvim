@@ -1,14 +1,14 @@
 -- [[ LSP breadcrumbs in winbar ]]
 
 vim.pack.add({
-  'https://github.com/Bekaboo/dropbar.nvim',
+  "https://github.com/Bekaboo/dropbar.nvim",
 }, { load = true })
 
 -- NOTE: Defer setup to avoid conflict with vim.pack redraw during startup
-vim.api.nvim_create_autocmd('UIEnter', {
+vim.api.nvim_create_autocmd("UIEnter", {
   once = true,
   callback = function()
-    require('dropbar').setup {
+    require("dropbar").setup({
       menu = {
         quick_navigation = false,
       },
@@ -17,8 +17,6 @@ vim.api.nvim_create_autocmd('UIEnter', {
         treesitter = { enabled = true },
         lsp = { enabled = true },
       },
-    }
+    })
   end,
 })
-
--- vim: ts=2 sts=2 sw=2 et
