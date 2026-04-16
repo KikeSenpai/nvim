@@ -32,15 +32,13 @@ require("obsidian").setup({
       action = function()
         return require("obsidian").util.gf_passthrough()
       end,
-      opts = { noremap = false, expr = true, buffer = true },
-      desc = "[F]ollow Link",
+      opts = { noremap = false, expr = true, buffer = true, desc = "[F]ollow Link" },
     },
     ["<leader>oc"] = {
       action = function()
         return require("obsidian").util.toggle_checkbox()
       end,
-      opts = { buffer = true },
-      desc = "Toggle [C]heckbox",
+      opts = { buffer = true, desc = "Toggle [C]heckbox" },
     },
   },
 
