@@ -25,6 +25,7 @@ local parsers = {
   "vim",
   "yaml",
   "kotlin",
+  "make",
 }
 
 -- Install missing parsers on startup
