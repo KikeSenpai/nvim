@@ -10,7 +10,7 @@ Personal Neovim 0.12 configuration using the native plugin manager (`vim.pack`).
 - [Nerd Font](https://www.nerdfonts.com/) installed and configured in your terminal
 - [Git](https://git-scm.com/)
 - A C compiler (`gcc` or `clang`) for Treesitter parser and telescope-fzf-native compilation
-- Python 3.12 via [pyenv](https://github.com/pyenv/pyenv) with `pynvim` installed
+- Python 3.12 via [uv](https://docs.astral.sh/uv/) with `pynvim` installed in a dedicated Neovim virtual environment
 - [StyLua](https://github.com/JohnnyMorganz/StyLua) for Lua formatting checks outside Neovim
 
 ### System packages
@@ -39,9 +39,10 @@ Install via your package manager (e.g. `brew`, `apt`):
 3. Create the Python virtual environment for Neovim:
 
    ```sh
-   pyenv virtualenv 3.12 py3.12-nvim
-   pyenv activate py3.12-nvim
-   pip install pynvim
+   uv python install 3.12
+   mkdir -p ~/.virtualenvs
+   uv venv --python 3.12 ~/.virtualenvs/nvim
+   uv pip install --python ~/.virtualenvs/nvim/bin/python pynvim
    ```
 
 4. Launch Neovim:

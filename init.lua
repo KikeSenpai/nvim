@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Assign a virtualenv for Neovim so that the `pynvim` package is not required for each virtualenv
-vim.g.python3_host_prog = "/Users/enrique.perez/.pyenv/versions/py3.12-nvim/bin/python"
+vim.g.python3_host_prog = "/Users/enrique.perez/.virtualenvs/nvim/bin/python"
 
 -- Make Node-based tools available to Neovim even when Node is managed by nvm.
 local function ensure_node_on_path()
