@@ -98,7 +98,7 @@ function M.render()
   -- Section B: branch
   local section_branch = ""
   if branch_cache ~= "" then
-    section_branch = hl("SLSectionB", "  " .. branch_cache)
+    section_branch = hl("SLSectionB", "  " .. branch_cache .. " ")
   end
 
   -- Section G: git changes
