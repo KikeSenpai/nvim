@@ -5,27 +5,31 @@ vim.pack.add({
   "https://github.com/HiPhish/rainbow-delimiters.nvim",
 }, { load = true })
 
--- Shared tokyonight storm colors
-local colors = {
-  red = "#f7768e",
-  yellow = "#e0af68",
-  blue = "#7aa2f7",
-  purple = "#bb9af7",
-  orange = "#ff9e64",
-  cyan = "#7dcfff",
-}
+-- Shared theme-derived colors
+local colorscheme = require("plugins.colorscheme")
 
 -- Indent guides
 local hooks = require("ibl.hooks")
 
-hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+local function apply_highlights()
+  local colors = colorscheme.get_palette()
+
   vim.api.nvim_set_hl(0, "RainbowIndentRed", { fg = colors.red })
   vim.api.nvim_set_hl(0, "RainbowIndentYellow", { fg = colors.yellow })
   vim.api.nvim_set_hl(0, "RainbowIndentBlue", { fg = colors.blue })
   vim.api.nvim_set_hl(0, "RainbowIndentPurple", { fg = colors.purple })
   vim.api.nvim_set_hl(0, "RainbowIndentOrange", { fg = colors.orange })
   vim.api.nvim_set_hl(0, "RainbowIndentCyan", { fg = colors.cyan })
-end)
+
+  vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = colors.red })
+  vim.api.nvim_set_hl(0, "RainbowDelimiterYellow", { fg = colors.yellow })
+  vim.api.nvim_set_hl(0, "RainbowDelimiterBlue", { fg = colors.blue })
+  vim.api.nvim_set_hl(0, "RainbowDelimiterPurple", { fg = colors.purple })
+  vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { fg = colors.orange })
+  vim.api.nvim_set_hl(0, "RainbowDelimiterCyan", { fg = colors.cyan })
+end
+
+hooks.register(hooks.type.HIGHLIGHT_SETUP, apply_highlights)
 
 require("ibl").setup({
   indent = {
@@ -47,13 +51,15 @@ require("ibl").setup({
 
 -- Rainbow brackets
 local rainbow = require("rainbow-delimiters")
+apply_highlights()
 
-vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = colors.red })
-vim.api.nvim_set_hl(0, "RainbowDelimiterYellow", { fg = colors.yellow })
-vim.api.nvim_set_hl(0, "RainbowDelimiterBlue", { fg = colors.blue })
-vim.api.nvim_set_hl(0, "RainbowDelimiterPurple", { fg = colors.purple })
-vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { fg = colors.orange })
-vim.api.nvim_set_hl(0, "RainbowDelimiterCyan", { fg = colors.cyan })
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("VisualThemeHighlights", { clear = true }),
+  callback = function()
+    colorscheme.invalidate_palette()
+    apply_highlights()
+  end,
+})
 
 require("rainbow-delimiters.setup").setup({
   strategy = {

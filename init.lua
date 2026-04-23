@@ -46,7 +46,7 @@ for _, file in ipairs(vim.fn.glob(vim.fn.stdpath("config") .. "/lua/plugins/*.lu
 end
 
 -- Statusline (after plugins so colorscheme is loaded)
-require("statusline").setup()
+require("statusline").init()
 
 -- NOTE: Enable experimental ui2 (removes "Press ENTER" prompts)
 pcall(function()

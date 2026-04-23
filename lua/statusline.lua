@@ -2,20 +2,7 @@
 -- Layout: mode | branch diff diagnostics | filename ---- encoding fileformat filetype | progress | location
 
 local M = {}
-
--- Tokyonight storm lualine colors
-local colors = {
-  bg_dark = "#1f2335",
-  bg_mid = "#3b4261",
-  fg = "#a9b1d6",
-  blue = "#7aa2f7",
-  green = "#9ece6a",
-  magenta = "#bb9af7",
-  yellow = "#e0af68",
-  red = "#f7768e",
-  cyan = "#56b6c2",
-  dark = "#1f2335",
-}
+local colorscheme = require("plugins.colorscheme")
 
 local mode_map = {
   n = "NORMAL",
@@ -191,6 +178,7 @@ function M.render()
 end
 
 function M.setup()
+  local colors = colorscheme.get_palette()
   local set = vim.api.nvim_set_hl
 
   -- Section A / Z: bold mode color on dark bg (changes per mode)
@@ -213,10 +201,17 @@ function M.setup()
 
   -- Section C / X: dark background
   set(0, "SLSectionC", { bg = colors.bg_dark, fg = colors.fg })
+end
 
-  -- Reapply highlights after colorscheme change
+function M.init()
+  local group = vim.api.nvim_create_augroup("StatuslineHighlights", { clear = true })
+
+  M.setup()
+
   vim.api.nvim_create_autocmd("ColorScheme", {
+    group = group,
     callback = function()
+      colorscheme.invalidate_palette()
       M.setup()
     end,
   })
