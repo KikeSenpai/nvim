@@ -141,6 +141,7 @@ function M.render()
   local section_sep = hl("SLSectionB", " | ")
   local sep_branch_git = section_branch ~= "" and section_git ~= "" and section_sep or ""
   local sep_git_diag = section_git ~= "" and section_diag ~= "" and section_sep or ""
+  local sep_branch_diag = section_branch ~= "" and section_git == "" and section_diag ~= "" and section_sep or ""
 
   -- Section C: filename (left side)
   local section_c = hl("SLSectionC", " %t%m%r ")
@@ -168,6 +169,7 @@ function M.render()
     sep_branch_git,
     section_git,
     sep_git_diag,
+    sep_branch_diag,
     section_diag,
     section_c,
     "%=",

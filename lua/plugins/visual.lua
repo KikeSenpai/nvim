@@ -14,12 +14,12 @@ local hooks = require("ibl.hooks")
 local function apply_highlights()
   local colors = colorscheme.get_palette()
 
-  vim.api.nvim_set_hl(0, "RainbowIndentRed", { fg = colors.red })
-  vim.api.nvim_set_hl(0, "RainbowIndentYellow", { fg = colors.yellow })
-  vim.api.nvim_set_hl(0, "RainbowIndentBlue", { fg = colors.blue })
-  vim.api.nvim_set_hl(0, "RainbowIndentPurple", { fg = colors.purple })
-  vim.api.nvim_set_hl(0, "RainbowIndentOrange", { fg = colors.orange })
-  vim.api.nvim_set_hl(0, "RainbowIndentCyan", { fg = colors.cyan })
+  vim.api.nvim_set_hl(0, "RainbowIndentRed", { fg = colors.red, nocombine = true })
+  vim.api.nvim_set_hl(0, "RainbowIndentYellow", { fg = colors.yellow, nocombine = true })
+  vim.api.nvim_set_hl(0, "RainbowIndentBlue", { fg = colors.blue, nocombine = true })
+  vim.api.nvim_set_hl(0, "RainbowIndentPurple", { fg = colors.purple, nocombine = true })
+  vim.api.nvim_set_hl(0, "RainbowIndentOrange", { fg = colors.orange, nocombine = true })
+  vim.api.nvim_set_hl(0, "RainbowIndentCyan", { fg = colors.cyan, nocombine = true })
 
   vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = colors.red })
   vim.api.nvim_set_hl(0, "RainbowDelimiterYellow", { fg = colors.yellow })
@@ -41,11 +41,12 @@ require("ibl").setup({
       "RainbowIndentOrange",
       "RainbowIndentCyan",
     },
-    char = "│",
+    char = "┃",
+    smart_indent_cap = false,
   },
   scope = {
     enabled = false,
-    char = "┃",
+    char = "│",
   },
 })
 
