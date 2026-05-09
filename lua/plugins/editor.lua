@@ -8,17 +8,17 @@ vim.pack.add({
 }, { load = true })
 
 -- Auto-detect indentation
-require("guess-indent").setup({
+require("guess-indent").setup {
   filetype_exclude = {
     "lua",
   },
-})
+}
 
 -- Highlight TODOs, NOTEs, WARNs in comments
-require("todo-comments").setup({ signs = false })
+require("todo-comments").setup { signs = false }
 
 -- Motion jumps
-require("flash").setup({})
+require("flash").setup {}
 
 vim.keymap.set({ "n", "x", "o" }, "<leader>jp", function()
   require("flash").jump()

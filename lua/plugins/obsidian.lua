@@ -7,13 +7,13 @@ vim.pack.add({
 }, { load = true })
 
 -- Markdown rendering
-require("render-markdown").setup({
+require("render-markdown").setup {
   file_types = { "markdown" },
-})
+}
 
 vim.keymap.set("n", "<leader>mt", ":RenderMarkdown toggle<CR>", { desc = "[T]oggle Render Markdown" })
 
-require("obsidian").setup({
+require("obsidian").setup {
   workspaces = {
     {
       name = "personal",
@@ -26,21 +26,6 @@ require("obsidian").setup({
   new_notes_location = "current_dir",
   preferred_link_style = "markdown",
   ui = { enable = false },
-
-  mappings = {
-    ["<leader>of"] = {
-      action = function()
-        return require("obsidian").util.gf_passthrough()
-      end,
-      opts = { noremap = false, expr = true, buffer = true, desc = "[F]ollow Link" },
-    },
-    ["<leader>oc"] = {
-      action = function()
-        return require("obsidian").util.toggle_checkbox()
-      end,
-      opts = { buffer = true, desc = "Toggle [C]heckbox" },
-    },
-  },
 
   note_frontmatter_func = function(note)
     local out = { id = note.id, aliases = note.aliases, tags = note.tags, area = "", project = "" }
@@ -69,7 +54,7 @@ require("obsidian").setup({
     date_format = "%Y-%m-%d-%a",
     time_format = "%H:%M",
   },
-})
+}
 
 -- Obsidian keymaps
 vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { desc = "Create [N]ew Note" })

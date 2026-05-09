@@ -5,14 +5,14 @@ vim.pack.add({
 }, { load = true })
 
 -- Better Around/Inside textobjects
-require("mini.ai").setup({ n_lines = 500 })
+require("mini.ai").setup { n_lines = 500 }
 
 -- Add/delete/replace surroundings (brackets, quotes, etc.)
 require("mini.surround").setup()
 
 -- File explorer
 local mini_files = require("mini.files")
-mini_files.setup({
+mini_files.setup {
   mappings = {
     go_in = "L",
     go_in_plus = "",
@@ -20,7 +20,7 @@ mini_files.setup({
     go_out_plus = "",
     synchronize = "U",
   },
-})
+}
 
 vim.keymap.set("n", "<leader>em", function()
   mini_files.open()
@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("User", {
     vim.keymap.set("n", "L", function()
       local entry = mini_files.get_fs_entry()
       if entry and entry.fs_type == "file" then
-        mini_files.go_in({ close_on_file = true })
+        mini_files.go_in { close_on_file = true }
       else
         mini_files.go_in()
       end

@@ -6,9 +6,9 @@ vim.pack.add({
 }, { load = true })
 
 -- NOTE: jsregexp not built — LuaSnip falls back to Lua patterns for snippet transforms
-require("luasnip").setup({})
+require("luasnip").setup {}
 
-require("blink.cmp").setup({
+require("blink.cmp").setup {
   keymap = {
     preset = "default",
 
@@ -49,4 +49,4 @@ require("blink.cmp").setup({
   fuzzy = { implementation = "lua" },
 
   signature = { enabled = true },
-})
+}

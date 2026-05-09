@@ -72,7 +72,7 @@ vim.cmd.packadd("nvim.undotree")
 vim.cmd.packadd("nvim.difftool")
 
 -- Custom filetypes
-vim.filetype.add({
+vim.filetype.add {
   extension = {
     lock = "toml",
   },
@@ -81,4 +81,4 @@ vim.filetype.add({
     [".*/templates/.*%.tpl"] = "helm",
     ["helmfile.*%.yaml"] = "helm",
   },
-})
+}

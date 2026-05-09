@@ -4,7 +4,7 @@ vim.pack.add({
   "https://github.com/lewis6991/gitsigns.nvim",
 }, { load = true })
 
-require("gitsigns").setup({
+require("gitsigns").setup {
   signs = {
     add = { text = "+" },
     change = { text = "~" },
@@ -23,7 +23,7 @@ require("gitsigns").setup({
 
     map("n", "]h", function()
       if vim.wo.diff then
-        vim.cmd.normal({ "]h", bang = true })
+        vim.cmd.normal { "]h", bang = true }
       else
         gitsigns.nav_hunk("next")
       end
@@ -31,7 +31,7 @@ require("gitsigns").setup({
 
     map("n", "[h", function()
       if vim.wo.diff then
-        vim.cmd.normal({ "[h", bang = true })
+        vim.cmd.normal { "[h", bang = true }
       else
         gitsigns.nav_hunk("prev")
       end
@@ -39,4 +39,4 @@ require("gitsigns").setup({
 
     map("n", "<leader>hb", gitsigns.blame_line, { desc = "Git [B]lame Line" })
   end,
-})
+}

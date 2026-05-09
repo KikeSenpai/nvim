@@ -162,7 +162,7 @@ function M.render()
   -- Section Z: location (matches mode color)
   local section_z = hl(mode_group, " %l:%c ")
 
-  return table.concat({
+  return table.concat {
     section_a,
     "%<",
     section_branch,
@@ -176,7 +176,7 @@ function M.render()
     section_x,
     section_y,
     section_z,
-  })
+  }
 end
 
 function M.setup()

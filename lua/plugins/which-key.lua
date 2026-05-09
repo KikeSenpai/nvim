@@ -4,7 +4,7 @@ vim.pack.add({
   "https://github.com/folke/which-key.nvim",
 }, { load = true })
 
-require("which-key").setup({
+require("which-key").setup {
   delay = 0,
   preset = false,
   icons = {
@@ -33,4 +33,4 @@ require("which-key").setup({
     { "<leader>s", group = "[S]earch" },
     { "<leader>w", group = "[W]indow" },
   },
-})
+}

@@ -5,12 +5,12 @@ local current_theme = {
   name = "tokyonight",
   style = "storm",
   setup = function()
-    require("tokyonight").setup({
+    require("tokyonight").setup {
       style = "storm",
-    })
+    }
   end,
   palette = function()
-    local colors = require("tokyonight.colors").setup({ style = "storm" })
+    local colors = require("tokyonight.colors").setup { style = "storm" }
     return {
       bg_dark = colors.bg_statusline or colors.bg_dark,
       bg_mid = colors.fg_gutter,

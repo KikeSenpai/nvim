@@ -50,14 +50,14 @@ local ensure_installed = vim.list_extend(vim.deepcopy(servers), {
   "luacheck",
   "jq",
 })
-require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-require("mason-lspconfig").setup({
+require("mason-tool-installer").setup { ensure_installed = ensure_installed }
+require("mason-lspconfig").setup {
   ensure_installed = {},
   automatic_installation = false,
-})
+}
 
 -- Diagnostic config
-vim.diagnostic.config({
+vim.diagnostic.config {
   severity_sort = true,
   float = { border = "rounded", source = "if_many" },
   underline = { severity = vim.diagnostic.severity.ERROR },
@@ -73,7 +73,7 @@ vim.diagnostic.config({
     source = "if_many",
     spacing = 2,
   },
-})
+}
 
 -- LSP keymaps (set on attach)
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -102,7 +102,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Toggle inlay hints
     if client and client.server_capabilities.inlayHintProvider then
       map("<leader>li", function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }), { bufnr = event.buf })
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }, { bufnr = event.buf })
       end, "Toggle [I]nlay Hints")
     end
     if client and client.server_capabilities.documentHighlightProvider then
@@ -121,7 +121,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
         callback = function(event2)
           vim.lsp.buf.clear_references()
-          vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = event2.buf })
+          vim.api.nvim_clear_autocmds { group = "lsp-highlight", buffer = event2.buf }
         end,
       })
     end
@@ -129,4 +129,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- KCL filetype detection
-vim.filetype.add({ extension = { k = "kcl" } })
+vim.filetype.add { extension = { k = "kcl" } }

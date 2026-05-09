@@ -7,12 +7,12 @@ vim.pack.add({
   "https://github.com/nvim-tree/nvim-web-devicons",
 }, { load = true })
 
-require("telescope").setup({
+require("telescope").setup {
   pickers = {
     find_files = { hidden = true },
     live_grep = { additional_args = { "--hidden" } },
   },
-})
+}
 
 pcall(require("telescope").load_extension, "fzf")
 
@@ -29,20 +29,20 @@ vim.keymap.set("n", "<leader>dl", builtin.diagnostics, { desc = "Open Diagnostic
 vim.keymap.set("n", "<leader>jl", builtin.jumplist, { desc = "Open Jump[l]ist" })
 
 vim.keymap.set("n", "<leader>/", function()
-  builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+  builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
     winblend = 10,
     previewer = false,
     prompt_title = "Live grep in current buffer",
-  }))
+  })
 end, { desc = "Search Buffer by Grep" })
 
 vim.keymap.set("n", "<leader>s/", function()
-  builtin.live_grep({
+  builtin.live_grep {
     grep_open_files = true,
     prompt_title = "Live Grep in Open Files",
-  })
+  }
 end, { desc = "Search Opened Files by Grep" })
 
 vim.keymap.set("n", "<leader>sn", function()
-  builtin.find_files({ cwd = vim.fn.stdpath("config") })
+  builtin.find_files { cwd = vim.fn.stdpath("config") }
 end, { desc = "Search [N]eovim Config Files" })

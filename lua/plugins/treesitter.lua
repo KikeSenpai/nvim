@@ -26,6 +26,7 @@ local parsers = {
   "yaml",
   "kotlin",
   "make",
+  "just",
 }
 
 -- Install missing parsers on startup

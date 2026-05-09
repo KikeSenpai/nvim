@@ -8,7 +8,7 @@ vim.pack.add({
 vim.api.nvim_create_autocmd("UIEnter", {
   once = true,
   callback = function()
-    require("dropbar").setup({
+    require("dropbar").setup {
       menu = {
         quick_navigation = false,
       },
@@ -17,6 +17,6 @@ vim.api.nvim_create_autocmd("UIEnter", {
         treesitter = { enabled = true },
         lsp = { enabled = true },
       },
-    })
+    }
   end,
 })

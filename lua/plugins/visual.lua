@@ -31,7 +31,7 @@ end
 
 hooks.register(hooks.type.HIGHLIGHT_SETUP, apply_highlights)
 
-require("ibl").setup({
+require("ibl").setup {
   indent = {
     highlight = {
       "RainbowIndentRed",
@@ -48,7 +48,7 @@ require("ibl").setup({
     enabled = false,
     char = "│",
   },
-})
+}
 
 -- Rainbow brackets
 local rainbow = require("rainbow-delimiters")
@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
-require("rainbow-delimiters.setup").setup({
+require("rainbow-delimiters.setup").setup {
   strategy = {
     [""] = rainbow.strategy["global"],
     vim = rainbow.strategy["local"],
@@ -84,4 +84,4 @@ require("rainbow-delimiters.setup").setup({
     "RainbowDelimiterCyan",
   },
   blacklist = { "c", "cpp" },
-})
+}

@@ -4,7 +4,7 @@ vim.pack.add({
   "https://github.com/supermaven-inc/supermaven-nvim",
 }, { load = true })
 
-require("supermaven-nvim").setup({
+require("supermaven-nvim").setup {
   keymaps = {
     accept_suggestion = "<M-CR>",
     clear_suggestion = "<C-[>",
@@ -14,4 +14,4 @@ require("supermaven-nvim").setup({
   log_level = "off",
   disable_inline_completion = false,
   disable_keymaps = false,
-})
+}
