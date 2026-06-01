@@ -48,6 +48,9 @@ require("ibl").setup {
     enabled = false,
     char = "│",
   },
+  exclude = {
+    filetypes = { "markdown" },
+  },
 }
 
 -- Rainbow brackets
