@@ -27,6 +27,7 @@ local parsers = {
   "kotlin",
   "make",
   "just",
+  "mermaid",
 }
 
 -- Install missing parsers on startup

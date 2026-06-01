@@ -21,12 +21,12 @@ local servers = {
   "terraformls",
   "ts_ls",
   "yamlls",
-  "sqls",
   "html",
   "kcl",
   "lua_ls",
   "helm_ls",
   "kotlin_lsp",
+  "mmdc",
 }
 
 -- Per-server settings
