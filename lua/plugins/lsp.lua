@@ -1,5 +1,10 @@
 -- [[ LSP Configuration ]]
 
+-- NOTE: Mason's pip-based installers (basedpyright) spawn `python3 -m venv` + ensurepip.
+-- The uv-managed python3 on PATH is a relocatable build with a baked-in /install
+-- prefix that breaks that bootstrap; prefer the real Homebrew install instead.
+vim.env.PATH = "/opt/homebrew/bin:" .. vim.env.PATH
+
 -- Mason: auto-install LSP servers and tools
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
@@ -16,7 +21,7 @@ local servers = {
   "dockerls",
   "jsonls",
   "marksman",
-  "pyright",
+  "basedpyright",
   "tflint",
   "terraformls",
   "ts_ls",
@@ -49,6 +54,7 @@ local ensure_installed = vim.list_extend(vim.deepcopy(servers), {
   "markdownlint",
   "luacheck",
   "jq",
+  "ruff",
 })
 require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 require("mason-lspconfig").setup {

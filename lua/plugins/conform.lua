@@ -11,6 +11,7 @@ require("conform").setup {
     terraform = { "terraform_fmt" },
     markdown = { "markdownlint" },
     json = { "jq" },
+    python = { "ruff_organize_imports", "ruff_fix", "ruff_format" },
   },
   default_format_opts = {
     lsp_format = "never",
