@@ -38,8 +38,6 @@ vim.keymap.set("n", "<leader>J", "J", { desc = "[J]oin Lines" })
 -- Buffer management
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "[D]elete current [B]uffer" })
 vim.keymap.set("n", "<leader>ba", ":%bd|edit#|bd#<CR>", { desc = "Delete [A]ll [B]uffers" })
-vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Goto [N]ext [B]uffer" })
-vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Goto [P]revious [B]uffer" })
 
 -- Window management
 vim.keymap.set("n", "<leader>wh", "<C-W>s", { desc = "Split Window [H]orizontally" })
