@@ -8,7 +8,14 @@ vim.pack.add({
 require("mini.ai").setup { n_lines = 500 }
 
 -- Add/delete/replace surroundings (brackets, quotes, etc.)
-require("mini.surround").setup()
+-- Keymaps match vim-surround (ys/cs/ds) for consistency with the JetBrains ideavimrc
+require("mini.surround").setup {
+  mappings = {
+    add = "ys",
+    delete = "ds",
+    replace = "cs",
+  },
+}
 
 -- File explorer
 local mini_files = require("mini.files")
@@ -22,9 +29,9 @@ mini_files.setup {
   },
 }
 
-vim.keymap.set("n", "<leader>em", function()
+vim.keymap.set("n", "<leader>ef", function()
   mini_files.open()
-end, { desc = "Open [M]ini File Explorer" })
+end, { desc = "[F]ocus Mini File Explorer" })
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "MiniFilesBufferCreate",
