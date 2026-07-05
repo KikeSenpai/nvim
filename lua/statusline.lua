@@ -2,7 +2,7 @@
 -- Layout: mode | branch diff diagnostics | filename ---- encoding fileformat filetype | progress | location
 
 local M = {}
-local colorscheme = require("plugins.colorscheme")
+local theme = require("plugins.theme")
 
 local mode_map = {
   n = "NORMAL",
@@ -180,7 +180,7 @@ function M.render()
 end
 
 function M.setup()
-  local colors = colorscheme.get_palette()
+  local colors = theme.get_palette()
   local set = vim.api.nvim_set_hl
 
   -- Section A / Z: bold mode color on dark bg (changes per mode)
@@ -213,7 +213,7 @@ function M.init()
   vim.api.nvim_create_autocmd("ColorScheme", {
     group = group,
     callback = function()
-      colorscheme.invalidate_palette()
+      theme.invalidate_palette()
       M.setup()
     end,
   })

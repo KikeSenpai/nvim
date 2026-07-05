@@ -6,13 +6,13 @@ vim.pack.add({
 }, { load = true })
 
 -- Shared theme-derived colors
-local colorscheme = require("plugins.colorscheme")
+local theme = require("plugins.theme")
 
 -- Indent guides
 local hooks = require("ibl.hooks")
 
 local function apply_highlights()
-  local colors = colorscheme.get_palette()
+  local colors = theme.get_palette()
 
   vim.api.nvim_set_hl(0, "RainbowIndentRed", { fg = colors.red, nocombine = true })
   vim.api.nvim_set_hl(0, "RainbowIndentYellow", { fg = colors.yellow, nocombine = true })
@@ -60,7 +60,7 @@ apply_highlights()
 vim.api.nvim_create_autocmd("ColorScheme", {
   group = vim.api.nvim_create_augroup("VisualThemeHighlights", { clear = true }),
   callback = function()
-    colorscheme.invalidate_palette()
+    theme.invalidate_palette()
     apply_highlights()
   end,
 })
