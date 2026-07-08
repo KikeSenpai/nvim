@@ -40,6 +40,26 @@ vim.lsp.config("helm_ls", {
     ["helm-ls"] = {
       yamlls = {
         path = "yaml-language-server",
+        config = {
+          -- default is "templates/**", which forces core-Kubernetes schema
+          -- validation on every template, including CRDs (e.g. SparkApplication)
+          -- the schema catalog doesn't know about, causing false-positive
+          -- "Property X is not allowed" diagnostics.
+          schemas = { kubernetes = false },
+        },
+      },
+    },
+  },
+})
+
+vim.lsp.config("basedpyright", {
+  settings = {
+    basedpyright = {
+      analysis = {
+        -- basedpyright's "standard" mode enables extra strict-only rules
+        -- (reportExplicitAny, reportAny, ...) that pyright never had; "basic"
+        -- matches pyright's default strictness.
+        typeCheckingMode = "basic",
       },
     },
   },
