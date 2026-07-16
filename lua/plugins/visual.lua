@@ -1,8 +1,9 @@
--- [[ Visual enhancements — rainbow indent guides + colored brackets ]]
+-- [[ Visual enhancements — rainbow indent guides + colored brackets + color highlighter ]]
 
 vim.pack.add({
   "https://github.com/lukas-reineke/indent-blankline.nvim",
   "https://github.com/HiPhish/rainbow-delimiters.nvim",
+  "https://github.com/catgoose/nvim-colorizer.lua",
 }, { load = true })
 
 -- Shared theme-derived colors
@@ -87,4 +88,11 @@ require("rainbow-delimiters.setup").setup {
     "RainbowDelimiterCyan",
   },
   blacklist = { "c", "cpp" },
+}
+
+-- Hex color highlighting only (no CSS color names)
+require("colorizer").setup {
+  user_default_options = {
+    names = false,
+  },
 }
