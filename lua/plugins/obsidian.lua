@@ -23,6 +23,10 @@ require("obsidian").setup {
   completion = {
     min_chars = 2,
   },
+  daily_notes = {
+    folder = "2.Areas/Parloa/Daily Planning",
+    date_format = "%Y-%m-%d",
+  },
   new_notes_location = "current_dir",
   preferred_link_style = "markdown",
   ui = { enable = false },
@@ -57,8 +61,37 @@ require("obsidian").setup {
 }
 
 -- Obsidian keymaps
-vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { desc = "Create [N]ew Note" })
+vim.keymap.set("n", "<leader>od", "<cmd>ObsidianToday<CR>", { desc = "Open Today's [D]aily Note" })
+vim.keymap.set("n", "<leader>om", "<cmd>ObsidianTomorrow<CR>", { desc = "Open To[m]orrow's Daily Note" })
+vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "[O]pen in Obsidian" })
 vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { desc = "[S]earch Notes" })
 vim.keymap.set({ "n", "v" }, "<leader>ol", ":ObsidianLink<CR>", { desc = "[L]ink Selection to Note" })
 vim.keymap.set("n", "<leader>ok", ":ObsidianLinks<CR>", { desc = "Search Lin[k]s in Buffer" })
 vim.keymap.set("n", "<leader>ot", ":ObsidianTags<CR>", { desc = "Search for [T]ags Ocurrences" })
+
+-- ObsidianNew skips the daily-notes folder and any file outside the vault.
+vim.keymap.set("n", "<leader>on", function()
+  local bufname = vim.api.nvim_buf_get_name(0)
+  if bufname == "" then
+    vim.notify("No file in this buffer", vim.log.levels.WARN)
+    return
+  end
+  local dir = vim.fn.fnamemodify(bufname, ":p:h")
+  local title = require("obsidian.util").input("Enter title or path (optional): ", { completion = "file" })
+  if not title then
+    require("obsidian.log").warn("Aborted")
+    return
+  elseif title == "" then
+    title = nil
+  elseif title:find("/", 1, true) then
+    dir = vim.fn.fnamemodify(dir .. "/" .. title, ":p:h")
+    title = vim.fn.fnamemodify(title, ":t")
+    if title == "" then
+      title = nil
+    end
+  end
+  local client = require("obsidian").get_client()
+  local note = client:create_note { title = title, dir = dir, no_write = true }
+  client:open_note(note, { sync = true })
+  client:write_note_to_buffer(note)
+end, { desc = "Create [N]ew Note" })
